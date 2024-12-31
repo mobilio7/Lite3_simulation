@@ -25,10 +25,10 @@ In the case the system requirements cannot be satisfied (e.g. you are using a di
 you can work inside a Docker container created from a ROS Noetic image. \
 Follow the steps below to create the Docker container inside a Ubuntu system.
 
-(1) If Docker Engine is not installed on your system, please follow the instructions from the link below to install Docker Engine.
-```
+(1) If Docker Engine is not installed on your system, please follow the instructions from the link below to install Docker Engine.\
+
 https://docs.docker.com/engine/install/ubuntu/
-```
+
 (2) Build a Docker image from the Dockerfile. The image name will be lite3-sim-ros1-image
 ```bash
 sudo docker build -t lite3-sim-ros1-image .
