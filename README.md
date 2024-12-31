@@ -70,3 +70,8 @@ To move robot, press L (torque-stance) and J (Gait Change) keys sequentially, th
 ```bash
 chmod +x ./scripts/teleop_key.sh && ./scripts/teleop_key.sh
 ```
+
+[Note] If you are trying to run simulation on a Docker container, rendering may fail. In such cases, open a new terminal, run the following command, and try again.
+```bash
+xhost +local:docker
+```
