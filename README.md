@@ -12,7 +12,7 @@ echo $ROS_DISTRO
 ```
 This command is expected to print 'noetic'. Otherwise, follow the steps below and try again. \
 (1) Add the following line to the ~/.bashrc file
-```
+```bash
 source /opt/ros/noetic/setup.bash
 ```
 (2) Run the following command on the terminal:
@@ -24,6 +24,7 @@ source ~/.bashrc
 In the case the system requirements cannot be satisfied (e.g. you are using a different version of Ubuntu), \
 you can work inside a Docker container created from a ROS Noetic image. \
 Follow the steps below to create the Docker container inside a Ubuntu system.
+
 (1) Build a Docker image from the Dockerfile. The image name will be lite3-sim-ros1-image
 ```bash
 sudo docker build -t lite3-sim-ros1-image .
