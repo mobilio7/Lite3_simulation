@@ -41,7 +41,7 @@ sudo docker run -it --name lite3_sim_ros1 --volume /tmp/.X11-unix:/tmp/.X11-unix
 ```bash
 sudo docker exec -it lite3_sim_ros1 bash
 ```
-If the container is not running, use the following command to start the container:
+If the container is not running, use the following command to start the container, then try again.
 ```bash
 sudo docker start lite3_sim_ros1
 ```
