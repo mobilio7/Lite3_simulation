@@ -20,6 +20,27 @@ source /opt/ros/noetic/setup.bash
 source ~/.bashrc
 ```
 
+## [Optional] Using Docker Container
+In the case the system requirements cannot be satisfied (e.g. you are using a different version of Ubuntu), \
+you can work inside a Docker container created from a ROS Noetic image. \
+Follow the steps below to create the Docker container inside a Ubuntu system.
+(1) Build a Docker image from the Dockerfile. The image name will be lite3-sim-ros1-image
+```bash
+sudo docker build -t lite3-sim-ros1-image .
+```
+(2) Create a Docker container from the image. The container name will be lite3_sim_ros1
+```bash
+sudo docker run -it --name lite3_sim_ros1 --volume /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY lite3-sim-ros1-image
+```
+(3) To interact with the container, run the following command:
+```bash
+sudo docker exec -it lite3_sim_ros1 bash
+```
+If the container is not running, use the following command to start the container:
+```bash
+sudo docker start lite3_sim_ros1
+```
+
 ## Install Dependencies
 Run the following command at this directory to install dependencies:
 ```bash
