@@ -98,3 +98,22 @@ sed -i '53a set(Python3_INCLUDE_DIR "/usr/include/python3.8")' ~/Lite3_simulatio
 sudo apt install liblcm-dev
 sudo apt install libglm-dev
 ```
+
+## Build
+To build the relevant packages, run the following command at this directory:
+```bash
+cd Lite3_simulation
+catkin_make
+```
+
+## Running Simulation
+All the commands are run at this directory. To terminate programs, press [ctrl + C].
+- [Terminal 1] Start gazebo and load the quadruped robot. The robot will be standing on the ground after a few seconds.
+```bash
+chmod +x ./scripts/start_sim.sh && ./scripts/start_sim.sh
+```
+- [Terminal 2] Run Keyboard Teleoperation. \
+To move robot, press L (torque-stance) and J (Gait Change) keys sequentially, then use A S D W Q E keys to control robot velocity. To stop, press L key. To restart, press J key.
+```bash
+chmod +x ./scripts/teleop_key.sh && ./scripts/teleop_key.sh
+```
