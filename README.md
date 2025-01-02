@@ -20,10 +20,7 @@ source /opt/ros/noetic/setup.bash
 source ~/.bashrc
 ```
 
-################################################################
-##  1. docker 사용하는 경우
-## [Option 1] Using Docker Container
-################################################################
+## [Optional 1] Using Docker Container
 
 In the case the system requirements cannot be satisfied (e.g. you are using a different version of Ubuntu), \
 you can work inside a Docker container created from a ROS Noetic image. \
@@ -80,10 +77,7 @@ If you are trying to run simulation on a Docker container, rendering may fail. I
 xhost +local:docker
 ```
 
-################################################################
-##  2. ROS Server 사용하는 경우
-## [Option 2] Using ROS Server
-################################################################
+## [Optional 2] Using ROS Server
 
 (1) This command is for modifying the CMakeLists.txt file located in Lite3_simulation/src/Lite3_Model_Control/high_level_sim/src/quadruped/
 ```bash
