@@ -75,3 +75,9 @@ If you are trying to run simulation on a Docker container, rendering may fail. I
 ```bash
 xhost +local:docker
 ```
+
+## [Optional] ROS Server
+This command is for modifying the CMakeLists.txt file located in Lite3_simulation/src/Lite3_Model_Control/high_level_sim/src/quadruped/
+```bash
+sed -i '53s/.*/set(Python3_EXECUTABLE "\/usr\/bin\/python3.8")/' ~/Lite3_simulation/src/Lite3_Model_Control/high_level_sim/src/quadruped/CMakeLists.txt
+```
