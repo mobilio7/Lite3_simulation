@@ -62,7 +62,7 @@ catkin_make
 
 ## Running Simulation
 All the commands are run at this directory. To terminate programs, press [ctrl + C].
-- [Terminal 1] Start gazebo and load the quadruped robot. The robot will be standing on the ground after a few seconds.
+- [Terminal 1] The gazebo starts and loads the quadruped robot. The robot stands on the ground after a few seconds.
 ```bash
 chmod +x ./scripts/start_sim.sh && ./scripts/start_sim.sh
 ```
@@ -103,7 +103,7 @@ catkin_make
 
 ## Running Simulation
 All the commands are run at this directory. To terminate programs, press [ctrl + C].
-- [Terminal 1] Start gazebo and load the quadruped robot. The robot will be standing on the ground after a few seconds.
+- [Terminal 1] The gazebo starts and loads the quadruped robot. The robot stands on the ground after a few seconds.
 ```bash
 chmod +x ./scripts/start_sim.sh && ./scripts/start_sim.sh
 ```
