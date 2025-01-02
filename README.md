@@ -114,3 +114,4 @@ To stop, press L key. To restart, press J key.
 ```bash
 chmod +x ./scripts/teleop_key.sh && ./scripts/teleop_key.sh
 ```
+[Note] W : front, A : left, S : back, D : right, Q : diagonal left, E : diagonal right
