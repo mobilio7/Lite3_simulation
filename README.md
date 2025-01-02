@@ -87,7 +87,7 @@ sed -i '53a set(Python3_LIBRARIES "/usr/lib/x86_64-linux-gnu/libpython3.8.so")' 
 sed -i '53a set(Python3_INCLUDE_DIR "/usr/include/python3.8")' ~/Lite3_simulation/src/Lite3_Model_Control/high_level_sim/src/quadruped/CMakeLists.txt
 ```
 
-(2) Install required libraries
+(2) Install required dependencies
 ```bash
 chmod +x ./scripts/install_dependencies.sh
 ./scripts/install_dependencies.sh
