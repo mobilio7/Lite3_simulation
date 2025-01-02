@@ -82,7 +82,7 @@ xhost +local:docker
 
 ################################################################
 ##  2. ROS Server 사용하는 경우
-## [Option 2] ROS Server
+## [Option 2] Using ROS Server
 ################################################################
 
 (1) This command is for modifying the CMakeLists.txt file located in Lite3_simulation/src/Lite3_Model_Control/high_level_sim/src/quadruped/
