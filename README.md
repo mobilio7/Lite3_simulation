@@ -20,10 +20,10 @@ source /opt/ros/noetic/setup.bash
 source ~/.bashrc
 ```
 
-#################################################################################################
+################################################################
 ##  1. docker 사용하는 경우
 ## [Option 1] Using Docker Container
-################################################################################################################################################
+################################################################
 In the case the system requirements cannot be satisfied (e.g. you are using a different version of Ubuntu), \
 you can work inside a Docker container created from a ROS Noetic image. \
 Follow the steps below to create the Docker container inside a Ubuntu system.
