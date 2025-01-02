@@ -89,6 +89,7 @@ sed -i '53a set(Python3_INCLUDE_DIR "/usr/include/python3.8")' ~/Lite3_simulatio
 
 (2) Install required dependencies
 ```bash
+cd Lite3_simulation
 chmod +x ./scripts/install_dependencies.sh
 ./scripts/install_dependencies.sh
 ```
