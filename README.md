@@ -20,7 +20,10 @@ source /opt/ros/noetic/setup.bash
 source ~/.bashrc
 ```
 
-## [Optional] Using Docker Container
+################################################################################################################################################
+##  1. docker 사용하는 경우
+## [Option 1] Using Docker Container
+################################################################################################################################################
 In the case the system requirements cannot be satisfied (e.g. you are using a different version of Ubuntu), \
 you can work inside a Docker container created from a ROS Noetic image. \
 Follow the steps below to create the Docker container inside a Ubuntu system.
@@ -76,7 +79,10 @@ If you are trying to run simulation on a Docker container, rendering may fail. I
 xhost +local:docker
 ```
 
-## [Optional] Using ROS Server
+################################################################################################################################################
+##  2. ros Server 사용하는 경우
+## [Option 2] ROS Server
+################################################################################################################################################
 (1) This command is for modifying the CMakeLists.txt file located in Lite3_simulation/src/Lite3_Model_Control/high_level_sim/src/quadruped/
 ```bash
 sed -i '53s/.*/set(Python3_EXECUTABLE "\/usr\/bin\/python3.8")/' ~/Lite3_simulation/src/Lite3_Model_Control/high_level_sim/src/quadruped/CMakeLists.txt && \
