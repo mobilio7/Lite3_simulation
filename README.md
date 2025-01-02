@@ -67,11 +67,12 @@ All the commands are run at this directory. To terminate programs, press [ctrl +
 chmod +x ./scripts/start_sim.sh && ./scripts/start_sim.sh
 ```
 - [Terminal 2] Run Keyboard Teleoperation. \
-To move robot, press L (torque-stance) and J (Gait Change) keys sequentially, then use A S D W Q E keys to control robot velocity. \
+To move robot, press L (torque-stance) and J (Gait Change) keys sequentially, then use W A S D Q E keys to control robot velocity. \
 To stop, press L key. To restart, press J key.
 ```bash
 chmod +x ./scripts/teleop_key.sh && ./scripts/teleop_key.sh
 ```
+[Note] W : front, A : left, S : back, D : right, Q : diagonal left, E : diagonal right
 ### Running on Docker Container
 If you are trying to run simulation on a Docker container, rendering may fail. In such cases, open a new terminal, run the following command, and try again.
 ```bash
@@ -109,7 +110,7 @@ All the commands are run at this directory. To terminate programs, press [ctrl +
 chmod +x ./scripts/start_sim.sh && ./scripts/start_sim.sh
 ```
 - [Terminal 2] Run Keyboard Teleoperation. \
-To move robot, press L (torque-stance) and J (Gait Change) keys sequentially, then use A S D W Q E keys to control robot velocity. \
+To move robot, press L (torque-stance) and J (Gait Change) keys sequentially, then use W A S D Q E keys to control robot velocity. \
 To stop, press L key. To restart, press J key.
 ```bash
 chmod +x ./scripts/teleop_key.sh && ./scripts/teleop_key.sh
