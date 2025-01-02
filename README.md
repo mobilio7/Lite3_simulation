@@ -89,8 +89,8 @@ sed -i '53a set(Python3_INCLUDE_DIR "/usr/include/python3.8")' ~/Lite3_simulatio
 
 (2) Install required libraries
 ```bash
-sudo apt install liblcm-dev
-sudo apt install libglm-dev
+chmod +x ./scripts/install_dependencies.sh
+./scripts/install_dependencies.sh
 ```
 
 ## How to Build?
