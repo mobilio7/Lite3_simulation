@@ -99,7 +99,7 @@ sudo apt install liblcm-dev
 sudo apt install libglm-dev
 ```
 
-## Build
+## How to Build?
 To build the relevant packages, run the following command at this directory:
 ```bash
 cd Lite3_simulation
