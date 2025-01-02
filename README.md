@@ -77,8 +77,7 @@ xhost +local:docker
 ```
 
 ## [Optional] ROS Server
-This command is for modifying the CMakeLists.txt file located in Lite3_simulation/src/Lite3_Model_Control/high_level_sim/src/quadruped/
-
+(1) This command is for modifying the CMakeLists.txt file located in Lite3_simulation/src/Lite3_Model_Control/high_level_sim/src/quadruped/
 ```bash
 sed -i '53s/.*/set(Python3_EXECUTABLE "\/usr\/bin\/python3.8")/' ~/Lite3_simulation/src/Lite3_Model_Control/high_level_sim/src/quadruped/CMakeLists.txt && \
 sed -i '53a find_package(Python3 REQUIRED COMPONENTS Interpreter Development)' ~/Lite3_simulation/src/Lite3_Model_Control/high_level_sim/src/quadruped/CMakeLists.txt && \
