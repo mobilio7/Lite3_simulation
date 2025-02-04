@@ -20,7 +20,7 @@ source /opt/ros/noetic/setup.bash
 source ~/.bashrc
 ```
 
-## [Optional 1] Using Docker Container
+## [Optional] Using Docker Container
 
 In the case the system requirements cannot be satisfied (e.g. you are using a different version of Ubuntu), \
 you can work inside a Docker container created from a ROS Noetic image. \
@@ -47,41 +47,10 @@ If the container is not running, use the following command to start the containe
 sudo docker start lite3_sim_ros1
 ```
 
-## Install Dependencies
-Run the following command at this directory to install dependencies:
-```bash
-chmod +x ./scripts/install_dependencies.sh
-./scripts/install_dependencies.sh
-```
+## [Optional] Using ROS Server
 
-## How to Build?
-To build the relevant packages, run the following command at this directory:
-```bash
-catkin_make
-```
+This command is for modifying the CMakeLists.txt file for "quadruped" package.
 
-## Running Simulation
-All the commands are run at this directory. To terminate programs, press [ctrl + C].
-- [Terminal 1] The gazebo starts and loads the quadruped robot. The robot stands on the ground after a few seconds.
-```bash
-chmod +x ./scripts/start_sim.sh && ./scripts/start_sim.sh
-```
-- [Terminal 2] Run Keyboard Teleoperation. \
-To move robot, press L (torque-stance) and J (Gait Change) keys sequentially, then use W A S D Q E keys to control robot velocity. \
-To stop, press L key. To restart, press J key.
-```bash
-chmod +x ./scripts/teleop_key.sh && ./scripts/teleop_key.sh
-```
-[Note] W : front, A : left, S : back, D : right, Q : diagonal left, E : diagonal right
-### Running on Docker Container
-If you are trying to run simulation on a Docker container, rendering may fail. In such cases, open a new terminal, run the following command, and try again.
-```bash
-xhost +local:docker
-```
-
-## [Optional 2] Using ROS Server
-
-(1) This command is for modifying the CMakeLists.txt file located in Lite3_simulation/src/Lite3_Model_Control/high_level_sim/src/quadruped/
 ```bash
 sed -i '53s/.*/set(Python3_EXECUTABLE "\/usr\/bin\/python3.8")/' ~/Lite3_simulation/src/Lite3_Model_Control/high_level_sim/src/quadruped/CMakeLists.txt && \
 sed -i '53a find_package(Python3 REQUIRED COMPONENTS Interpreter Development)' ~/Lite3_simulation/src/Lite3_Model_Control/high_level_sim/src/quadruped/CMakeLists.txt && \
@@ -89,21 +58,26 @@ sed -i '53a set(Python3_LIBRARIES "/usr/lib/x86_64-linux-gnu/libpython3.8.so")' 
 sed -i '53a set(Python3_INCLUDE_DIR "/usr/include/python3.8")' ~/Lite3_simulation/src/Lite3_Model_Control/high_level_sim/src/quadruped/CMakeLists.txt
 ```
 
-(2) Install required dependencies
+The package directory :
+```
+src/Lite3_Model_Control/high_level_sim/src/quadruped/
+```
+
+## Install Dependencies
+Run the following command at this directory to install dependencies:
 ```bash
-cd Lite3_simulation
 chmod +x ./scripts/install_dependencies.sh
 ./scripts/install_dependencies.sh
 ```
 
-## How to Build?
-To build the relevant packages, run the following command at this directory:
+## Build Packages
+To build the relevant packages, run the following commands at this directory:
 ```bash
-cd Lite3_simulation
+source /opt/ros/noetic/setup.bash
 catkin_make
 ```
 
-## Running Simulation
+## Run Simulation
 All the commands are run at this directory. To terminate programs, press [ctrl + C].
 - [Terminal 1] The gazebo starts and loads the quadruped robot. The robot stands on the ground after a few seconds.
 ```bash
@@ -116,3 +90,40 @@ To stop, press L key. To restart, press J key.
 chmod +x ./scripts/teleop_key.sh && ./scripts/teleop_key.sh
 ```
 [Note] W : front, A : left, S : back, D : right, Q : diagonal left, E : diagonal right
+### (Note) Running on Docker Container
+If you are trying to run simulation on a Docker container, rendering may fail. In such cases, open a new terminal, run the following command, and try again.
+```bash
+xhost +local:docker
+```
+
+## Compatibility with ROS2 Applications (ROS1 Bridge)
+Probably, you want to apply some algorithms (e.g. SLAM, navigation) written in ROS2 framework to this virtual robot. The package "ROS1 Bridge" enables communication between ROS1 and ROS2 applications. For detailed explanation about ROS1 Bridge, please visit: \
+ https://github.com/ros2/ros1_bridge
+
+Before proceeding,
+- If you use Docker, it is recommended to create a separate Docker container for ROS2 applications because of the root privilege issue. Also, all relevant Docker containers should be created with "--network host". 
+
+  Create the container for simulation by running the following command:
+  ```bash
+  sudo docker run -it --name lite3_sim_ros1 --network host --volume /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY lite3-sim-ros1-image
+  ```
+
+  Create the container for ROS2 applications as below:
+  ```bash
+  sudo docker run -it --name applications_ros2 --network host --volume /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY ros:humble-ros-core
+  ```
+- Check whether "ROS2 Foxy" is installed on the environment where you run simulation. If not installed, then run the following command to install ROS2 Foxy.
+  ```bash
+  chmod +x ./scripts/install_ros2_foxy.sh && ./scripts/install_ros2_foxy.sh
+  ``` 
+  Then, at the same environment, install ROS1 Bridge running:
+  ```bash
+  sudo apt-get install ros-foxy-ros1-bridge
+  ```
+
+To enable ROS1<->ROS2 communication, open **a separate terminal** and run the following command. Note that, when you use Docker, the terminal should be opened inside the Docker container where you run simulation.
+```bash
+chmod +x ./scripts/run_ros1_bridge.sh && ./scripts/run_ros1_bridge.sh
+```
+
+While the script is running, you can run your ROS2 nodes to publish/subscribe to the topics of common types from the robot simulation.
