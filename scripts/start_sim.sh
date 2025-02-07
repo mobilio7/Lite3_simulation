@@ -1,3 +1,3 @@
 #!/bin/bash
 source ./devel/setup.bash
-rosrun run_high_level start_simulator
+rosrun run_high_level start_simulator $1

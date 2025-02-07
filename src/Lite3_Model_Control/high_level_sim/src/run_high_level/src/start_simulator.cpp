@@ -11,8 +11,9 @@ void gazeboThreadFunc() {
   runBashCommand(cmd);
 }
 
-void spawnRobotThreadFunc() {
-  const std::string cmd = "source ./devel/setup.bash && roslaunch gazebo_model_spawn model_spawn.launch rname:=lite3 use_xacro:=true use_camera:=false";
+void spawnRobotThreadFunc(const bool lidar = false) {
+  const std::string cmd = std::string("source ./devel/setup.bash && roslaunch gazebo_model_spawn model_spawn.launch lidar:=") + (lidar ? "true" : "false");
+  std::cout << "cmd = " << cmd << std::endl;
   runBashCommand(cmd);
 }
 
@@ -22,15 +23,20 @@ void robotStandupThreadFunc() {
 }
 
 
-int main() {
+int main(int argc, char * argv[]) {
   std::vector<std::thread> threads;
+
+  bool lidar = false;
+  if (argc > 1 && std::string(argv[1]) == "lidar:=true") {
+    lidar = true;
+  }
 
   // Add gazebo thread
   threads.emplace_back(&gazeboThreadFunc);
   std::this_thread::sleep_for(1s);
 
   // Add spawn_robot thread
-  threads.emplace_back(&spawnRobotThreadFunc);
+  threads.emplace_back(&spawnRobotThreadFunc, lidar);
   std::this_thread::sleep_for(5s);
 
   // Add robot standup thread

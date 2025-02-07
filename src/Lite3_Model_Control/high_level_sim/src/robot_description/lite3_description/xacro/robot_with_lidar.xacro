@@ -6,6 +6,15 @@
     <xacro:include filename="$(find lite3_description)/xacro/body.xacro"/>
     <xacro:include filename="$(find lite3_description)/xacro/transmission.xacro"/>
 
-    <xacro:Lite3 has_lidar="false"/>
+    <!-- Lidar parameters -->
+    <xacro:Lite3 
+        has_lidar="true"
+        lidar_hz="20"
+        lidar_horizontal_samples="3600"
+        lidar_channels="16"
+        lidar_min_range="0.3"
+        lidar_max_range="130.0"
+        lidar_noise="0.008"
+    />
 
 </robot>
