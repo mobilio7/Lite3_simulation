@@ -102,7 +102,7 @@ All the commands are run at this directory. To terminate programs, press [ctrl +
 
 ### Terminal 1 : Robot Simulation
 You can either run robot simulation with or without a 3D LiDAR plugin. \
-To run without 3D LiDAR, run:
+To run without 3D LiDAR, run: \
 **(With GPU)**
 ```bash
 chmod +x ./scripts/start_sim.sh && ./scripts/start_sim.sh
@@ -111,7 +111,7 @@ chmod +x ./scripts/start_sim.sh && ./scripts/start_sim.sh
 ```bash
 chmod +x ./scripts/start_sim.sh && LIBGL_ALWAYS_SOFTWARE=1 ./scripts/start_sim.sh
 ```
-To run with 3D LiDAR enabled, run:
+To run with 3D LiDAR enabled, run: \
 **(With GPU)**
 ```bash
 chmod +x ./scripts/start_sim.sh && ./scripts/start_sim.sh lidar:=true
