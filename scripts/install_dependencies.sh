@@ -8,6 +8,8 @@ sudo apt-get install -y libyaml-cpp-dev
 sudo apt-get install -y libeigen3-dev
 sudo apt-get install -y liblcm-dev
 sudo apt-get install -y libglm-dev
+sudo apt-get install -y libgl1-mesa-glx
+sudo apt-get install -y libglib2.0-dev
 
 sudo apt-get install -y ros-noetic-robot-state-publisher
 sudo apt-get install -y ros-noetic-joint-state-publisher
