@@ -1,8 +1,8 @@
 # DEEP Robotics Jueying Lite3 Simulator
 DEEP Robotics Jueying Lite3 Gazebo simulation with high-level motion control \
 [Note] Original Source Code : https://github.com/DeepRoboticsLab/Lite3_Model_Control \
-[Warning] The simulated robot may have different parameters from the real robot.
-[Warning] The simulated robot's velocity control may not be accurate.
+**[Warning] The simulated robot may have different parameters from the real robot.** \
+**[Warning] The simulated robot's velocity control may not be accurate. **
 
 ## System Requirements
 - Ubuntu 20.04
