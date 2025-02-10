@@ -1,6 +1,8 @@
 # DEEP Robotics Jueying Lite3 Simulator
 DEEP Robotics Jueying Lite3 Gazebo simulation with high-level motion control \
-[Note] Original Source Code : https://github.com/DeepRoboticsLab/Lite3_Model_Control
+[Note] Original Source Code : https://github.com/DeepRoboticsLab/Lite3_Model_Control \
+[Warning] The simulated robot may have different parameters from the real robot.
+[Warning] The simulated robot's velocity control may not be accurate.
 
 ## System Requirements
 - Ubuntu 20.04
@@ -48,11 +50,11 @@ sudo docker build -t lite3-sim-ros1-image .
 Create a Docker container using the image from [Step 3]. The container name will be lite3_sim_ros1
 #### With GPU
 ```bash
-sudo docker run --name lite3_sim_ros1 --gpus all --volume /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY lite3-sim-ros1-image
+sudo docker run -it --name lite3_sim_ros1 --gpus all --volume /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY lite3-sim-ros1-image
 ```
 #### Without GPU
 ```bash
-sudo docker run --name lite3_sim_ros1 --volume /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY lite3-sim-ros1-image
+sudo docker run -it --name lite3_sim_ros1 --volume /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY lite3-sim-ros1-image
 ```
 
 ### Step 5 : Interact with the Docker Container
@@ -101,12 +103,22 @@ All the commands are run at this directory. To terminate programs, press [ctrl +
 ### Terminal 1 : Robot Simulation
 You can either run robot simulation with or without a 3D LiDAR plugin. \
 To run without 3D LiDAR, run:
+**(With GPU)**
 ```bash
 chmod +x ./scripts/start_sim.sh && ./scripts/start_sim.sh
 ```
+**(Without GPU)**
+```bash
+chmod +x ./scripts/start_sim.sh && LIBGL_ALWAYS_SOFTWARE=1 ./scripts/start_sim.sh
+```
 To run with 3D LiDAR enabled, run:
+**(With GPU)**
 ```bash
 chmod +x ./scripts/start_sim.sh && ./scripts/start_sim.sh lidar:=true
+```
+**(Without GPU)**
+```bash
+chmod +x ./scripts/start_sim.sh && LIBGL_ALWAYS_SOFTWARE=1 ./scripts/start_sim.sh lidar:=true
 ```
 Then Gazebo simulation begins and loads the quadruped robot. The robot will stand on the ground after a few seconds. (If the robot fails to stand, then stop the process and try again.)
 
@@ -143,21 +155,21 @@ Probably you want to apply some algorithms (e.g. SLAM, navigation) written in RO
   Create the Docker container for simulation by running the following command: \
   **(With GPU)**
   ```bash
-  sudo docker run --name lite3_sim_ros1 --gpus all --network host --volume /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY lite3-sim-ros1-image
+  sudo docker run -it --name lite3_sim_ros1 --gpus all --network host --volume /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY lite3-sim-ros1-image
   ```
   **(Without GPU)**
   ```bash
-  sudo docker run --name lite3_sim_ros1 --network host --volume /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY lite3-sim-ros1-image
+  sudo docker run -it --name lite3_sim_ros1 --network host --volume /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY lite3-sim-ros1-image
   ```
 
   Create the Docker container for ROS2 applications as below: \
   **(With GPU)**
   ```bash
-  sudo docker run --name applications_ros2 --gpus all --network host --volume /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY ros:humble-ros-core
+  sudo docker run -it --name applications_ros2 --gpus all --network host --volume /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY ros:humble-ros-core
   ```
   **(Without GPU)**
   ```bash
-  sudo docker run --name applications_ros2 --network host --volume /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY ros:humble-ros-core
+  sudo docker run -it --name applications_ros2 --network host --volume /tmp/.X11-unix:/tmp/.X11-unix -e DISPLAY=unix$DISPLAY ros:humble-ros-core
   ```
 - Check whether "ROS2 Foxy" is installed on the environment where you run simulation. If not installed, then run the following command to install ROS2 Foxy.
   ```bash
