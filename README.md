@@ -70,14 +70,14 @@ sudo docker start lite3_sim_ros1
 
 ## [Optional] Using ROS Server
 
-This command is for modifying the CMakeLists.txt file for "quadruped" package. \
-[Note] Please enter this command all at once
+This command is for modifying the CMakeLists.txt file for "quadruped" package.
 ```bash
 sed -i '53s/.*/set(Python3_EXECUTABLE "\/usr\/bin\/python3.8")/' ~/Lite3_simulation/src/Lite3_Model_Control/high_level_sim/src/quadruped/CMakeLists.txt && \
 sed -i '53a find_package(Python3 REQUIRED COMPONENTS Interpreter Development)' ~/Lite3_simulation/src/Lite3_Model_Control/high_level_sim/src/quadruped/CMakeLists.txt && \
 sed -i '53a set(Python3_LIBRARIES "/usr/lib/x86_64-linux-gnu/libpython3.8.so")' ~/Lite3_simulation/src/Lite3_Model_Control/high_level_sim/src/quadruped/CMakeLists.txt && \
 sed -i '53a set(Python3_INCLUDE_DIR "/usr/include/python3.8")' ~/Lite3_simulation/src/Lite3_Model_Control/high_level_sim/src/quadruped/CMakeLists.txt
 ```
+[Note] Please enter this command all at once
 
 
 ## Install Dependencies
